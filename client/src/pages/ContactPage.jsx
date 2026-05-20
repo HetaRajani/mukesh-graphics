@@ -27,7 +27,6 @@ function ContactPage() {
   });
 
   const [loading, setLoading] = useState(false);
-
   const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
@@ -35,6 +34,8 @@ function ContactPage() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    setSuccess("");
   };
 
   const handleSubmit = async (e) => {
@@ -71,7 +72,9 @@ function ContactPage() {
 
       <section className="quote-page">
         <div className="quote-left">
-          <p className="quote-label">REQUEST A QUOTE</p>
+          <p className="quote-label">
+            REQUEST A QUOTE
+          </p>
 
           <h1>
             Let’s Create Your
@@ -113,9 +116,14 @@ function ContactPage() {
         </div>
 
         <div className="quote-form-box">
-          <div className="quote-badge">Premium Project Inquiry</div>
+          <div className="quote-badge">
+            Premium Project Inquiry
+          </div>
 
-          <form className="quote-form" onSubmit={handleSubmit}>
+          <form
+            className="quote-form"
+            onSubmit={handleSubmit}
+          >
             <div className="form-grid">
               <input
                 type="text"
@@ -157,12 +165,29 @@ function ContactPage() {
               value={formData.service}
               onChange={handleChange}
             >
-              <option value="">Select Service</option>
-              <option>Packaging Design</option>
-              <option>Printing</option>
-              <option>Branding</option>
-              <option>Product Box</option>
-              <option>Label Design</option>
+              <option value="">
+                Select Service
+              </option>
+
+              <option>
+                Packaging Design
+              </option>
+
+              <option>
+                Printing
+              </option>
+
+              <option>
+                Branding
+              </option>
+
+              <option>
+                Product Box
+              </option>
+
+              <option>
+                Label Design
+              </option>
             </select>
 
             <div className="form-grid">
@@ -202,8 +227,14 @@ function ContactPage() {
               </p>
             )}
 
-            <button type="submit" disabled={loading}>
-              {loading ? "Sending..." : "Request Custom Quote"}
+            <button
+              type="submit"
+              disabled={loading}
+            >
+              {loading
+                ? "Sending..."
+                : "Request Custom Quote"}
+
               <ArrowRight size={18} />
             </button>
           </form>

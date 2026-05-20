@@ -25,8 +25,6 @@ function RequestQuotePage() {
     projectDetails: "",
   });
 
- 
-
   const [loading, setLoading] = useState(false);
 
   /* HANDLE INPUT */
@@ -50,26 +48,9 @@ function RequestQuotePage() {
 
       setLoading(true);
 
-      const data = new FormData();
-
-      Object.keys(formData).forEach((key) => {
-
-        data.append(key, formData[key]);
-
-      });
-
-      
-
-
       await API.post(
         "/quote",
-        data,
-        {
-          headers: {
-            "Content-Type":
-              "multipart/form-data",
-          },
-        }
+        formData
       );
 
       toast.success(
@@ -86,8 +67,6 @@ function RequestQuotePage() {
         budget: "",
         projectDetails: "",
       });
-
-      
 
     } catch (error) {
 
@@ -222,12 +201,6 @@ function RequestQuotePage() {
               value={formData.projectDetails}
               onChange={handleChange}
             ></textarea>
-
-            
-
-            
-
-            {/* BUTTON */}
 
             <button
               type="submit"
