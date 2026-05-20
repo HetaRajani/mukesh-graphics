@@ -55,7 +55,6 @@ router.get("/", (req, res) => {
 
 router.post(
   "/",
-  upload.single("file"),
 
   async (req, res) => {
 
@@ -64,47 +63,30 @@ router.post(
       const newQuote = new Quote({
 
         fullName: req.body.fullName,
-
         email: req.body.email,
-
         phone: req.body.phone,
-
         company: req.body.company,
-
         service: req.body.service,
-
         quantity: req.body.quantity,
-
         budget: req.body.budget,
-
         projectDetails: req.body.projectDetails,
-
-        file: req.file
-          ? req.file.filename
-          : "",
 
       });
 
       await newQuote.save();
 
       res.status(201).json({
-
         success: true,
-
         message: "Quote request submitted successfully",
-
       });
 
     } catch (error) {
 
-      console.log("QUOTE ERROR:", error);
+      console.log(error);
 
       res.status(500).json({
-
         success: false,
-
         message: "Server Error",
-
       });
 
     }
