@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+import path from "path";
 
 import Quote from "../models/Quote.js";
 
@@ -11,7 +12,7 @@ const storage = multer.diskStorage({
 
   destination: (req, file, cb) => {
 
-    cb(null, "uploads/");
+    cb(null, path.resolve("uploads"));
 
   },
 
@@ -28,19 +29,23 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-/* ROUTE */
+/* TEST ROUTE */
 
 router.get("/", (req, res) => {
+
   res.json({
     success: true,
     message: "Quote route working",
   });
+
 });
+
+/* POST QUOTE */
 
 router.post(
   "/",
   upload.single("file"),
- 
+
   async (req, res) => {
 
     try {
@@ -72,17 +77,23 @@ router.post(
       await newQuote.save();
 
       res.status(201).json({
+
         success: true,
+
         message: "Quote request submitted successfully",
+
       });
 
     } catch (error) {
 
-      console.log(error);
+      console.log("QUOTE ERROR:", error);
 
       res.status(500).json({
+
         success: false,
+
         message: "Server Error",
+
       });
 
     }
