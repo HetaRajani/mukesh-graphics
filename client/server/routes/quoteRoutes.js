@@ -1,10 +1,21 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
+import fs from "fs";
 
 import Quote from "../models/Quote.js";
 
 const router = express.Router();
+
+/* CREATE UPLOADS FOLDER */
+
+const uploadPath = path.join(process.cwd(), "uploads");
+
+if (!fs.existsSync(uploadPath)) {
+
+  fs.mkdirSync(uploadPath, { recursive: true });
+
+}
 
 /* MULTER */
 
@@ -12,7 +23,7 @@ const storage = multer.diskStorage({
 
   destination: (req, file, cb) => {
 
-    cb(null, path.resolve("uploads"));
+    cb(null, uploadPath);
 
   },
 
@@ -40,7 +51,7 @@ router.get("/", (req, res) => {
 
 });
 
-/* POST QUOTE */
+/* POST ROUTE */
 
 router.post(
   "/",
