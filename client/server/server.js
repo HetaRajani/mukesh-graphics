@@ -20,7 +20,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://printcraft-express.vercel.app/",
+      "http://localhost:5176",
+      "https://printcraft-express.vercel.app",
     ],
     credentials: true,
   })
