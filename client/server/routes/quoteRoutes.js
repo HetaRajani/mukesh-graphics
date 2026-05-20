@@ -1,44 +1,8 @@
 import express from "express";
-import multer from "multer";
-import path from "path";
-import fs from "fs";
 
 import Quote from "../models/Quote.js";
 
 const router = express.Router();
-
-/* CREATE UPLOADS FOLDER */
-
-const uploadPath = path.join(process.cwd(), "uploads");
-
-if (!fs.existsSync(uploadPath)) {
-
-  fs.mkdirSync(uploadPath, { recursive: true });
-
-}
-
-/* MULTER */
-
-const storage = multer.diskStorage({
-
-  destination: (req, file, cb) => {
-
-    cb(null, uploadPath);
-
-  },
-
-  filename: (req, file, cb) => {
-
-    cb(
-      null,
-      Date.now() + "-" + file.originalname
-    );
-
-  },
-
-});
-
-const upload = multer({ storage });
 
 /* TEST ROUTE */
 
@@ -51,47 +15,56 @@ router.get("/", (req, res) => {
 
 });
 
-/* POST ROUTE */
+/* POST QUOTE */
 
-router.post(
-  "/",
+router.post("/", async (req, res) => {
 
-  async (req, res) => {
+  try {
 
-    try {
+    const newQuote = new Quote({
 
-      const newQuote = new Quote({
+      fullName: req.body.fullName,
 
-        fullName: req.body.fullName,
-        email: req.body.email,
-        phone: req.body.phone,
-        company: req.body.company,
-        service: req.body.service,
-        quantity: req.body.quantity,
-        budget: req.body.budget,
-        projectDetails: req.body.projectDetails,
+      email: req.body.email,
 
-      });
+      phone: req.body.phone,
 
-      await newQuote.save();
+      company: req.body.company,
 
-      res.status(201).json({
-        success: true,
-        message: "Quote request submitted successfully",
-      });
+      service: req.body.service,
 
-    } catch (error) {
+      quantity: req.body.quantity,
 
-      console.log(error);
+      budget: req.body.budget,
 
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-      });
+      projectDetails: req.body.projectDetails,
 
-    }
+    });
+
+    await newQuote.save();
+
+    res.status(201).json({
+
+      success: true,
+
+      message: "Quote request submitted successfully",
+
+    });
+
+  } catch (error) {
+
+    console.log("QUOTE ERROR:", error);
+
+    res.status(500).json({
+
+      success: false,
+
+      message: "Server Error",
+
+    });
 
   }
-);
+
+});
 
 export default router;

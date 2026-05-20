@@ -4,7 +4,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Upload,
   ArrowRight,
 } from "lucide-react";
 
@@ -16,7 +15,6 @@ import API from "../api/api";
 import "./ContactPage.css";
 
 function ContactPage() {
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -28,49 +26,26 @@ function ContactPage() {
     projectDetails: "",
   });
 
-  const [file, setFile] = useState(null);
-
   const [loading, setLoading] = useState(false);
 
   const [success, setSuccess] = useState("");
 
-  /* HANDLE INPUT */
-
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-
   };
 
-  /* SUBMIT */
-
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-
       setLoading(true);
 
-      const data = new FormData();
+      await API.post("/quote", formData);
 
-      Object.keys(formData).forEach((key) => {
-        data.append(key, formData[key]);
-      });
-
-      if (file) {
-        data.append("file", file);
-      }
-
-      const response = await API.post(
-        "/quote",
-        data
-      );
-
-      setSuccess(response.data.message);
+      setSuccess("Quote request submitted successfully");
 
       setFormData({
         fullName: "",
@@ -82,21 +57,12 @@ function ContactPage() {
         budget: "",
         projectDetails: "",
       });
-
-      setFile(null);
-
     } catch (error) {
-
-      console.log(error);
-
-      alert("Something went wrong");
-
+      console.log(error.response?.data || error.message);
+      alert(error.response?.data?.message || "Something went wrong");
     } finally {
-
       setLoading(false);
-
     }
-
   };
 
   return (
@@ -104,14 +70,8 @@ function ContactPage() {
       <Header />
 
       <section className="quote-page">
-
-        {/* LEFT */}
-
         <div className="quote-left">
-
-          <p className="quote-label">
-            REQUEST A QUOTE
-          </p>
+          <p className="quote-label">REQUEST A QUOTE</p>
 
           <h1>
             Let’s Create Your
@@ -120,14 +80,12 @@ function ContactPage() {
           </h1>
 
           <p className="quote-text">
-            Tell us about your project and our creative
-            team will help you craft premium packaging,
-            printing and branding solutions tailored
-            for your business.
+            Tell us about your project and our creative team will help you craft
+            premium packaging, printing and branding solutions tailored for your
+            business.
           </p>
 
           <div className="quote-contact-list">
-
             <div className="quote-contact-card">
               <Mail size={22} />
               <div>
@@ -151,26 +109,14 @@ function ContactPage() {
                 <p>Gujarat, India</p>
               </div>
             </div>
-
           </div>
-
         </div>
 
-        {/* FORM */}
-
         <div className="quote-form-box">
+          <div className="quote-badge">Premium Project Inquiry</div>
 
-          <div className="quote-badge">
-            Premium Project Inquiry
-          </div>
-
-          <form
-            className="quote-form"
-            onSubmit={handleSubmit}
-          >
-
+          <form className="quote-form" onSubmit={handleSubmit}>
             <div className="form-grid">
-
               <input
                 type="text"
                 name="fullName"
@@ -204,7 +150,6 @@ function ContactPage() {
                 value={formData.company}
                 onChange={handleChange}
               />
-
             </div>
 
             <select
@@ -212,35 +157,15 @@ function ContactPage() {
               value={formData.service}
               onChange={handleChange}
             >
-
-              <option value="">
-                Select Service
-              </option>
-
-              <option>
-                Packaging Design
-              </option>
-
-              <option>
-                Printing
-              </option>
-
-              <option>
-                Branding
-              </option>
-
-              <option>
-                Product Box
-              </option>
-
-              <option>
-                Label Design
-              </option>
-
+              <option value="">Select Service</option>
+              <option>Packaging Design</option>
+              <option>Printing</option>
+              <option>Branding</option>
+              <option>Product Box</option>
+              <option>Label Design</option>
             </select>
 
             <div className="form-grid">
-
               <input
                 type="text"
                 name="quantity"
@@ -256,7 +181,6 @@ function ContactPage() {
                 value={formData.budget}
                 onChange={handleChange}
               />
-
             </div>
 
             <textarea
@@ -265,28 +189,6 @@ function ContactPage() {
               value={formData.projectDetails}
               onChange={handleChange}
             ></textarea>
-
-            {/* FILE */}
-
-            <label className="upload-box">
-
-              <Upload size={20} />
-
-              {file
-                ? file.name
-                : "Upload Design / Reference"}
-
-              <input
-                type="file"
-                hidden
-                onChange={(e) =>
-                  setFile(e.target.files[0])
-                }
-              />
-
-            </label>
-
-            {/* SUCCESS */}
 
             {success && (
               <p
@@ -300,25 +202,12 @@ function ContactPage() {
               </p>
             )}
 
-            {/* BUTTON */}
-
-            <button
-              type="submit"
-              disabled={loading}
-            >
-
-              {loading
-                ? "Sending..."
-                : "Request Custom Quote"}
-
+            <button type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Request Custom Quote"}
               <ArrowRight size={18} />
-
             </button>
-
           </form>
-
         </div>
-
       </section>
 
       <Footer />

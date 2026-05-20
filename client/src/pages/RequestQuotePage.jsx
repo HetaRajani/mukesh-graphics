@@ -2,7 +2,6 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 import {
-  Upload,
   ArrowRight,
 } from "lucide-react";
 
@@ -26,7 +25,7 @@ function RequestQuotePage() {
     projectDetails: "",
   });
 
-  const [file, setFile] = useState(null);
+ 
 
   const [loading, setLoading] = useState(false);
 
@@ -59,11 +58,8 @@ function RequestQuotePage() {
 
       });
 
-      if (file) {
+      
 
-        data.append("file", file);
-
-      }
 
       await API.post(
         "/quote",
@@ -91,7 +87,7 @@ function RequestQuotePage() {
         projectDetails: "",
       });
 
-      setFile(null);
+      
 
     } catch (error) {
 
@@ -227,29 +223,9 @@ function RequestQuotePage() {
               onChange={handleChange}
             ></textarea>
 
-            {/* FILE */}
+            
 
-            <label className="upload-box">
-
-              <Upload size={20} />
-
-              {
-                file
-                  ? file.name
-                  : "Upload Design / Reference"
-              }
-
-              <input
-                type="file"
-                hidden
-                onChange={(e) =>
-                  setFile(
-                    e.target.files[0]
-                  )
-                }
-              />
-
-            </label>
+            
 
             {/* BUTTON */}
 
