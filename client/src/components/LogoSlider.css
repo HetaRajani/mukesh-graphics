@@ -1,0 +1,42 @@
+.logo-section {
+  background: #ffffff;
+  padding: 55px 0 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.logo-section p {
+  color: #777;
+  margin-bottom: 28px;
+  font-weight: 700;
+}
+
+.logo-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-track {
+  display: flex;
+  gap: 90px;
+  width: max-content;
+  animation: logoScroll 25s linear infinite;
+}
+
+.logo-track span {
+  font-size: 28px;
+  font-weight: 800;
+  color: #aaa;
+  white-space: nowrap;
+}
+
+@keyframes logoScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.33%);
+  }
+}
