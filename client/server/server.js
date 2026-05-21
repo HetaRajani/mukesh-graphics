@@ -23,7 +23,8 @@ app.use(
       "http://localhost:5176",
       "https://printcraft-express.vercel.app",
       "https://printcraft-express-git-main-metro-matcha.vercel.app",
-      "https://printcraft-express-o7j24kqup-metro-matcha.vercel.app"
+      "https://printcraft-express-o7j24kqup-metro-matcha.vercel.app",
+      "https://printcraft-express-r0q2lyc5p-metro-matcha.vercel.app",
     ],
     credentials: true,
   })
