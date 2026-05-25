@@ -1,158 +1,177 @@
 .main-header {
   width: 100%;
-  z-index: 1000;
-  padding: 18px 36px;
-  background: linear-gradient(135deg, #4c1d95, #08051f);
-  overflow-x: hidden;
+  padding: 24px 40px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8fbff 50%,
+    #edf5ff 100%
+  );
+  overflow: hidden;
 }
+
+/* NAVBAR */
 
 .main-navbar {
   max-width: 1450px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 22px 34px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 18px 30px;
+  justify-content: space-between;
+
   border-radius: 28px;
-  background: rgba(255,255,255,0.08);
-  border: 0.5px solid rgba(255,255,255,0.14);
-  backdrop-filter: blur(16px);
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(226, 232, 240, 0.8);
+
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
 }
+
+/* BRAND */
 
 .main-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   text-decoration: none;
-  min-width: 0;
 }
+
+/* LOGO */
 
 .main-brand img {
-  width: 120px;
-  height: auto;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
+  display: block;
+  transform: scale(1.8);
+}
+/* TEXT */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.main-brand h2 {
-  font-size: 42px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: 2px;
-  color: white;
+.brand-text h2 {
   margin: 0;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 1px;
+  color: #0f172a;
 }
 
-.main-brand p {
+.brand-text p {
+  margin-top: 8px;
   font-size: 11px;
   letter-spacing: 5px;
-  color: rgba(255,255,255,0.82);
-  margin: 0;
+  color: #64748b;
+  text-transform: uppercase;
 }
+
+/* LINKS */
 
 .main-links {
   display: flex;
-  gap: 36px;
+  align-items: center;
+  gap: 42px;
 }
 
 .main-links a {
-  color: white;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 600;
+  color: #0f172a;
+  font-size: 17px;
+  font-weight: 650;
+  transition: 0.3s ease;
 }
 
-.header-quote-btn {
+.main-links a:hover {
+  color: #2563eb;
+}
+
+/* BUTTON */
+
+.header-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 30px;
-  border-radius: 100px;
-  background: linear-gradient(135deg, #7c3aed, #c084fc);
+
+  padding: 16px 34px;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
   color: white;
+
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
+
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.25);
   transition: 0.3s ease;
-  box-shadow: 0 15px 40px rgba(124,58,237,0.25);
-  white-space: nowrap;
 }
 
-.header-quote-btn:hover {
+.header-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 50px rgba(124,58,237,0.35);
+  box-shadow: 0 20px 45px rgba(37, 99, 235, 0.35);
+}
+
+/* TABLET */
+
+@media (max-width: 992px) {
+  .main-navbar {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .main-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
 
+@media (max-width: 768px) {
   .main-header {
-    padding: 14px;
+    padding: 18px;
   }
 
   .main-navbar {
-    width: 100%;
-    padding: 22px 18px;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    border-radius: 24px;
-    overflow: hidden;
+    padding: 24px 20px;
   }
 
   .main-brand {
-    width: 100%;
-    justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
   }
 
   .main-brand img {
-    width: 62px;
+    width: 52px;
+    height: 52px;
   }
 
-  .main-brand h2 {
-    font-size: 30px;
-    letter-spacing: 1px;
-    white-space: normal;
+  .brand-text h2 {
+    font-size: 24px;
   }
 
-  .main-brand p {
+  .brand-text p {
     font-size: 9px;
     letter-spacing: 3px;
   }
 
   .main-links {
-    width: 100%;
     flex-direction: column;
-    align-items: center;
-    gap: 14px;
+    gap: 16px;
   }
 
-  .main-links a {
-    font-size: 18px;
-  }
-
-  .header-quote-btn {
+  .header-btn {
     width: 100%;
-    padding: 16px 20px;
-    font-size: 18px;
-  }
-}
-
-/* SMALL PHONES */
-@media (max-width: 420px) {
-  .main-brand h2 {
-    font-size: 26px;
-  }
-
-  .main-brand p {
-    font-size: 8px;
-    letter-spacing: 2.5px;
-  }
-
-  .main-brand img {
-    width: 54px;
   }
 }

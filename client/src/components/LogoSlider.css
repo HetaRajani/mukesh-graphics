@@ -1,42 +1,121 @@
-.logo-section {
-  background: #ffffff;
-  padding: 55px 0 40px;
-  text-align: center;
-  overflow: hidden;
-}
+/* =========================
+   LOGO SLIDER SECTION
+========================= */
 
-.logo-section p {
-  color: #777;
-  margin-bottom: 28px;
-  font-weight: 700;
-}
+.logo-slider {
 
-.logo-marquee {
   width: 100%;
+
+  padding: 20px 0 35px;
+
+  background: #ffffff;
+
   overflow: hidden;
+
+  text-align: center;
+
   position: relative;
+
+  z-index: 5;
 }
+
+/* TITLE */
+
+.logo-slider h3 {
+
+  width: 100%;
+
+  text-align: center;
+
+  margin: 0 auto 24px;
+
+  color: #64748b;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+/* TRACK */
 
 .logo-track {
+
   display: flex;
-  gap: 90px;
+
+  align-items: center;
+
+  gap: 42px;
+
   width: max-content;
-  animation: logoScroll 25s linear infinite;
+
+  animation: scrollLogo 24s linear infinite;
 }
+
+/* LOGOS */
 
 .logo-track span {
-  font-size: 28px;
+
+  font-size: 22px;
+
   font-weight: 800;
-  color: #aaa;
+
+  color: #94a3b8;
+
+  opacity: 0.55;
+
   white-space: nowrap;
+
+  transition: 0.3s ease;
 }
 
-@keyframes logoScroll {
+.logo-track span:hover {
+
+  color: #2563eb;
+
+  opacity: 1;
+}
+
+/* ANIMATION */
+
+@keyframes scrollLogo {
+
   from {
+
     transform: translateX(0);
   }
 
   to {
-    transform: translateX(-33.33%);
+
+    transform: translateX(-50%);
   }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .logo-slider {
+
+    padding: 15px 0 25px;
+  }
+
+  .logo-slider h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+  }
+
+  .logo-track {
+
+    gap: 28px;
+  }
+
+  .logo-track span {
+
+    font-size: 18px;
+  }
+
 }

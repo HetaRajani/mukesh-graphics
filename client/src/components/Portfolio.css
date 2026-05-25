@@ -1,11 +1,15 @@
 .portfolio-section {
-  padding: 90px 50px 120px;
-  background: linear-gradient(180deg, #ffffff 0%, #faf7ff 100%);
+  padding: 90px 50px 70px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f7faff 100%
+  );
   text-align: center;
 }
 
 .portfolio-label {
-  color: #7c3aed;
+  color: #2563eb;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 3px;
@@ -15,20 +19,21 @@
 .portfolio-line {
   width: 52px;
   height: 3px;
-  background: #7c3aed;
+  background: #2563eb;
   border-radius: 999px;
   margin: 0 auto 28px;
 }
 
 .portfolio-section h2 {
   font-size: 54px;
-  color: #111827;
+  color: #0f172a;
   margin-bottom: 16px;
   letter-spacing: -2px;
+  font-weight: 800;
 }
 
 .portfolio-subtitle {
-  color: #6b7280;
+  color: #64748b;
   font-size: 18px;
   margin-bottom: 60px;
 }
@@ -44,10 +49,10 @@
 .portfolio-card {
   position: relative;
   overflow: hidden;
-  border-radius: 22px;
-  background: #111827;
+  border-radius: 24px;
+  background: #0f172a;
   cursor: pointer;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  box-shadow: 0 20px 55px rgba(37, 99, 235, 0.10);
   transition: 0.4s ease;
 }
 
@@ -72,7 +77,8 @@
 }
 
 .portfolio-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 70px rgba(37, 99, 235, 0.18);
 }
 
 .portfolio-card:hover img {
@@ -84,40 +90,52 @@
   position: absolute;
   top: 18px;
   left: 18px;
+
   width: 52px;
   height: 52px;
+
   border-radius: 50%;
-  background: rgba(255,255,255,0.92);
+
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
-  color: #7c3aed;
+
+  color: #2563eb;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 3;
+
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.12);
 }
 
 .portfolio-overlay {
   position: absolute;
   inset: 0;
+
   padding: 24px;
+
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+
   background: linear-gradient(
     180deg,
     transparent 35%,
-    rgba(0,0,0,0.82)
+    rgba(15, 23, 42, 0.86)
   );
+
   color: white;
 }
 
 .portfolio-overlay h3 {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 750;
 }
 
 .portfolio-button-wrapper {
-  margin-top: 90px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -127,27 +145,39 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 30px;
-  border-radius: 100px;
-  background: linear-gradient(135deg,#7c3aed,#a855f7);
+
+  padding: 15px 34px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #38bdf8
+  );
+
   color: white;
+
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
+
   border: none;
   cursor: pointer;
+
   transition: all 0.3s ease;
-  box-shadow: 0 12px 30px rgba(124,58,237,0.22);
+
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.22);
 }
 
 .portfolio-btn:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 18px 40px rgba(124,58,237,0.32);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.32);
 }
 
 @media (max-width: 950px) {
   .portfolio-section {
-    padding: 75px 24px 90px;
+    padding: 75px 24px 85px;
   }
 
   .portfolio-section h2 {
@@ -174,86 +204,5 @@
 
   .portfolio-button-wrapper {
     margin-top: 55px;
-  }
-}
-
-.portfolio-section {
-  padding: 90px 50px 60px;
-}
-
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .main-header {
-    padding: 16px;
-  }
-
-  .main-navbar {
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
-    width: 100%;
-  }
-
-  .main-links {
-    flex-direction: column;
-    gap: 14px;
-    text-align: center;
-  }
-
-  .header-quote-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 42px;
-    line-height: 1.1;
-  }
-
-  .hero {
-    padding: 80px 20px;
-  }
-
-  .hero-image-box {
-    width: 100%;
-    margin-top: 40px;
-  }
-
-  .portfolio-grid,
-  .values-grid,
-  .form-grid,
-  .about-story,
-  .quote-page {
-    grid-template-columns: 1fr !important;
-  }
-
-  .quote-page,
-  .request-page {
-    padding: 60px 20px;
-  }
-
-  .quote-form-box {
-    padding: 28px;
-    border-radius: 24px;
-  }
-
-  .quote-left h1,
-  .about-page h1 {
-    font-size: 42px;
-  }
-
-  input,
-  select,
-  textarea,
-  button {
-    width: 100%;
-  }
-
-  .footer {
-    grid-template-columns: 1fr !important;
-    text-align: center;
   }
 }
