@@ -12,27 +12,23 @@ function Header() {
 
         {/* LOGO */}
 
-        <Link
-          to="/images/logo.png"
-          className="main-brand"
-        >
+       <Link
+  to="/"
+  className="main-brand"
+>
+  <img
+    src="/images/logo.png"
+    alt="Printcraft"
+  />
 
-          <img
-            src="/images/logo.png"
-            alt="Printcraft"
-          />
+  <div className="brand-text">
+    <h2>PRINTCRAFT</h2>
 
-          <div className="brand-text">
-
-            <h2>PRINTCRAFT</h2>
-
-            <p>
-              CREATIVE PACKAGING STUDIO
-            </p>
-
-          </div>
-
-        </Link>
+    <p>
+      CREATIVE PACKAGING STUDIO
+    </p>
+  </div>
+</Link>
 
         {/* LINKS */}
 
