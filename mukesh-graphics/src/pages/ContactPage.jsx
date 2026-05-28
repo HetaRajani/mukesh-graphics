@@ -10,8 +10,6 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import API from "../api/api";
-
 import "./ContactPage.css";
 
 function ContactPage() {
@@ -27,6 +25,7 @@ function ContactPage() {
   });
 
   const [loading, setLoading] = useState(false);
+
   const [success, setSuccess] = useState("");
 
   const handleChange = (e) => {
@@ -42,12 +41,13 @@ function ContactPage() {
     e.preventDefault();
 
     setLoading(true);
+
     setSuccess("");
 
-    try {
-      await API.post("/quote", formData);
-
-      setSuccess("Quote request submitted successfully!");
+    setTimeout(() => {
+      setSuccess(
+        "Quote request submitted successfully!"
+      );
 
       setFormData({
         fullName: "",
@@ -59,16 +59,9 @@ function ContactPage() {
         budget: "",
         projectDetails: "",
       });
-    } catch (error) {
-      console.log(error);
 
-      alert(
-        error.response?.data?.message ||
-          "Backend is not connected. Please check your server API URL."
-      );
-    } finally {
       setLoading(false);
-    }
+    }, 1500);
   };
 
   return (
@@ -88,32 +81,39 @@ function ContactPage() {
           </h1>
 
           <p className="quote-text">
-            Tell us about your project and our creative team will help you craft
-            premium packaging, printing and branding solutions tailored for your
-            business.
+            Tell us about your project and our creative
+            team will help you craft premium packaging,
+            printing and branding solutions tailored for
+            your business.
           </p>
 
           <div className="quote-contact-list">
             <div className="quote-contact-card">
               <Mail size={22} />
+
               <div>
                 <h4>Email Us</h4>
+
                 <p>info@mukeshgraphics.com</p>
               </div>
             </div>
 
             <div className="quote-contact-card">
               <Phone size={22} />
+
               <div>
                 <h4>Call Us</h4>
+
                 <p>+91 98765 43210</p>
               </div>
             </div>
 
             <div className="quote-contact-card">
               <MapPin size={22} />
+
               <div>
                 <h4>Visit Office</h4>
+
                 <p>Gujarat, India</p>
               </div>
             </div>
@@ -241,6 +241,7 @@ function ContactPage() {
               ) : (
                 <>
                   Request Custom Quote
+
                   <ArrowRight size={18} />
                 </>
               )}

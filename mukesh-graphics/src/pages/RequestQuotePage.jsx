@@ -1,19 +1,14 @@
 import toast from "react-hot-toast";
 import { useState } from "react";
 
-import {
-  ArrowRight,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import API from "../api/api";
-
 import "./RequestQuotePage.css";
 
 function RequestQuotePage() {
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,35 +22,20 @@ function RequestQuotePage() {
 
   const [loading, setLoading] = useState(false);
 
-  /* HANDLE INPUT */
-
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
-
   };
 
-  /* SUBMIT */
-
-  const handleSubmit = async (e) => {
-
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
+    setLoading(true);
 
-      setLoading(true);
-
-      await API.post(
-        "/quote",
-        formData
-      );
-
-      toast.success(
-        "Quote submitted successfully"
-      );
+    setTimeout(() => {
+      toast.success("Quote submitted successfully!");
 
       setFormData({
         fullName: "",
@@ -68,24 +48,8 @@ function RequestQuotePage() {
         projectDetails: "",
       });
 
-    } catch (error) {
-
-      console.log(
-        error.response?.data ||
-        error.message
-      );
-
-      toast.error(
-        error.response?.data?.message ||
-        error.message
-      );
-
-    } finally {
-
       setLoading(false);
-
-    }
-
+    }, 1500);
   };
 
   return (
@@ -93,9 +57,7 @@ function RequestQuotePage() {
       <Header />
 
       <section className="request-page">
-
         <div className="quote-form-box">
-
           <div className="quote-badge">
             Premium Project Inquiry
           </div>
@@ -104,9 +66,7 @@ function RequestQuotePage() {
             className="quote-form"
             onSubmit={handleSubmit}
           >
-
             <div className="form-grid">
-
               <input
                 type="text"
                 name="fullName"
@@ -140,7 +100,6 @@ function RequestQuotePage() {
                 value={formData.company}
                 onChange={handleChange}
               />
-
             </div>
 
             <select
@@ -148,35 +107,32 @@ function RequestQuotePage() {
               value={formData.service}
               onChange={handleChange}
             >
-
               <option value="">
                 Select Service
               </option>
 
-              <option>
+              <option value="Packaging Design">
                 Packaging Design
               </option>
 
-              <option>
+              <option value="Printing">
                 Printing
               </option>
 
-              <option>
+              <option value="Branding">
                 Branding
               </option>
 
-              <option>
+              <option value="Product Box">
                 Product Box
               </option>
 
-              <option>
+              <option value="Label Design">
                 Label Design
               </option>
-
             </select>
 
             <div className="form-grid">
-
               <input
                 type="text"
                 name="quantity"
@@ -192,7 +148,6 @@ function RequestQuotePage() {
                 value={formData.budget}
                 onChange={handleChange}
               />
-
             </div>
 
             <textarea
@@ -202,28 +157,18 @@ function RequestQuotePage() {
               onChange={handleChange}
             ></textarea>
 
-            <button
-              type="submit"
-              disabled={loading}
-            >
-
-              {
-                loading ? (
-                  <div className="spinner"></div>
-                ) : (
-                  <>
-                    Request Custom Quote
-                    <ArrowRight size={18} />
-                  </>
-                )
-              }
-
+            <button type="submit" disabled={loading}>
+              {loading ? (
+                <div className="spinner"></div>
+              ) : (
+                <>
+                  Request Custom Quote
+                  <ArrowRight size={18} />
+                </>
+              )}
             </button>
-
           </form>
-
         </div>
-
       </section>
 
       <Footer />
