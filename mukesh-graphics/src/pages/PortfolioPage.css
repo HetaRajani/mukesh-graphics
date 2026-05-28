@@ -1,0 +1,36 @@
+/* =========================
+   PORTFOLIO PAGE
+========================= */
+
+.portfolio-page {
+  overflow-x: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8fbff 0%,
+      #eef4ff 100%
+    );
+}
+
+/* REMOVE EXTRA SPACE */
+
+.portfolio-page .portfolio-section {
+  padding-bottom: 70px;
+}
+
+/* HIDE BUTTON */
+
+.portfolio-page .portfolio-button-wrapper {
+  display: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .portfolio-page .portfolio-section {
+    padding: 70px 20px 50px;
+  }
+
+}

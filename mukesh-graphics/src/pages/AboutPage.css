@@ -1,0 +1,250 @@
+.about-page {
+  overflow-x: hidden;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef4ff 100%);
+}
+
+.about-page .main-header {
+  margin-bottom: 0 !important;
+}
+
+/* HERO */
+.about-hero {
+  position: relative;
+  padding: 75px 24px 80px;
+  text-align: center;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.1), transparent 30%),
+    linear-gradient(135deg, #f8fbff 0%, #eef4ff 55%, #ffffff 100%);
+}
+
+.about-hero-label {
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+}
+
+.about-hero-line {
+  width: 58px;
+  height: 3px;
+  border-radius: 999px;
+  margin: 0 auto 26px;
+  background: linear-gradient(90deg, #2563eb, #06b6d4, #ff721b);
+}
+
+.about-hero h1 {
+  font-size: 64px;
+  line-height: 1.05;
+  letter-spacing: -3px;
+  font-weight: 900;
+  color: #07111f;
+  margin-bottom: 24px;
+}
+
+.about-hero h1 span {
+  background: linear-gradient(135deg, #2563eb, #06b6d4, #ff721b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-hero p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #64748b;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+/* STORY */
+.about-story {
+  padding: 70px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.about-story h2 {
+  font-size: 46px;
+  color: #07111f;
+  font-weight: 900;
+  margin-bottom: 24px;
+  letter-spacing: -2px;
+}
+
+.about-story p {
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.about-stat-card {
+  padding: 34px 24px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.08);
+  text-align: center;
+  transition: 0.35s ease;
+}
+
+.about-stat-card:hover {
+  transform: translateY(-8px);
+}
+
+.about-stat-card.active {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+}
+
+.about-stat-card h3 {
+  font-size: 44px;
+  font-weight: 900;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+.about-stat-card.active h3,
+.about-stat-card.active p {
+  color: white;
+}
+
+.about-stat-card p {
+  color: #64748b;
+  font-weight: 700;
+}
+
+/* WHY */
+.about-why {
+  padding: 50px 8% 80px;
+  text-align: center;
+}
+
+.about-why h2 {
+  font-size: 50px;
+  color: #07111f;
+  font-weight: 900;
+  margin-bottom: 50px;
+  letter-spacing: -2px;
+}
+
+.why-grid {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.why-card {
+  padding: 36px 32px;
+  border-radius: 26px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.08);
+  transition: 0.35s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-8px);
+}
+
+.why-card h3 {
+  font-size: 26px;
+  color: #07111f;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.why-card p {
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* CTA */
+.about-cta {
+  max-width: 980px;
+  margin: 0 auto 90px;
+  padding: 70px 40px;
+  border-radius: 36px;
+  text-align: center;
+
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  box-shadow: 0 28px 75px rgba(37, 99, 235, 0.22);
+}
+
+.about-cta h2 {
+  color: white;
+  font-size: 48px;
+  line-height: 1.12;
+  font-weight: 900;
+  margin-bottom: 22px;
+}
+
+.about-cta p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
+  margin-bottom: 34px;
+}
+
+.about-cta a {
+  display: inline-flex;
+  padding: 15px 34px;
+  border-radius: 999px;
+  background: white;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 900;
+  transition: 0.35s ease;
+}
+
+.about-cta a:hover {
+  transform: translateY(-4px);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .about-hero {
+    padding: 65px 20px;
+  }
+
+  .about-hero h1 {
+    font-size: 42px;
+    letter-spacing: -2px;
+  }
+
+  .about-story {
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+  }
+
+  .about-stats-grid,
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-why h2 {
+    font-size: 38px;
+  }
+
+  .about-cta {
+    margin: 0 20px 70px;
+    padding: 55px 24px;
+  }
+
+  .about-cta h2 {
+    font-size: 36px;
+  }
+}
