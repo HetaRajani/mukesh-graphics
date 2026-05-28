@@ -41,12 +41,13 @@ function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setLoading(true);
+    setLoading(true);
+    setSuccess("");
 
+    try {
       await API.post("/quote", formData);
 
-      setSuccess("Quote request submitted successfully");
+      setSuccess("Quote request submitted successfully!");
 
       setFormData({
         fullName: "",
@@ -59,8 +60,12 @@ function ContactPage() {
         projectDetails: "",
       });
     } catch (error) {
-      console.log(error.response?.data || error.message);
-      alert(error.response?.data?.message || "Something went wrong");
+      console.log(error);
+
+      alert(
+        error.response?.data?.message ||
+          "Backend is not connected. Please check your server API URL."
+      );
     } finally {
       setLoading(false);
     }
@@ -93,7 +98,7 @@ function ContactPage() {
               <Mail size={22} />
               <div>
                 <h4>Email Us</h4>
-                <p>info@printcraft.com</p>
+                <p>info@mukeshgraphics.com</p>
               </div>
             </div>
 
@@ -169,23 +174,23 @@ function ContactPage() {
                 Select Service
               </option>
 
-              <option>
+              <option value="Packaging Design">
                 Packaging Design
               </option>
 
-              <option>
+              <option value="Printing">
                 Printing
               </option>
 
-              <option>
+              <option value="Branding">
                 Branding
               </option>
 
-              <option>
+              <option value="Product Box">
                 Product Box
               </option>
 
-              <option>
+              <option value="Label Design">
                 Label Design
               </option>
             </select>
@@ -218,9 +223,9 @@ function ContactPage() {
             {success && (
               <p
                 style={{
-                  color: "#7c3aed",
+                  color: "#16a34a",
                   marginBottom: "20px",
-                  fontWeight: "600",
+                  fontWeight: "700",
                 }}
               >
                 {success}
@@ -231,11 +236,14 @@ function ContactPage() {
               type="submit"
               disabled={loading}
             >
-              {loading
-                ? "Sending..."
-                : "Request Custom Quote"}
-
-              <ArrowRight size={18} />
+              {loading ? (
+                "Sending..."
+              ) : (
+                <>
+                  Request Custom Quote
+                  <ArrowRight size={18} />
+                </>
+              )}
             </button>
           </form>
         </div>
