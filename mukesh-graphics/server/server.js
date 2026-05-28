@@ -12,31 +12,9 @@ const app = express();
 
 /* CORS */
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5176",
-
-  // NEW FRONTEND URLS
-  "https://mukesh-graphics.vercel.app",
-  "https://mukesh-graphics-git-main-hetarajani.vercel.app",
-  "https://mukesh-graphics-hetarajani.vercel.app",
-
-  // RENDER FRONTEND
-  "https://mukesh-graphics.onrender.com",
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-
+    origin: true,
     credentials: true,
   })
 );
